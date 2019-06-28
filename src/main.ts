@@ -4,12 +4,6 @@ import { Simple } from './Test/Logger';
 import * as minimist from 'minimist';
 import { SpecOverrider } from './Test/SpecOverrider';
 
-import * as yaml from 'js-yaml';
-import * as fs from 'fs';
-
-let doc = yaml.safeLoad(fs.readFileSync('test.yaml', 'utf8'));
-
-
 let argv = minimist(process.argv.slice(2));
 
 // console.log('ARGV', argv);
