@@ -1,0 +1,28 @@
+---
+oasis-script: 1.0
+auth:
+  summary: "Full authentication flow"
+  operations:
+    submitCreds:
+      op: "Submit Auth Credentials"
+      reqCT: 'application/json'
+      respCT: 'application/json'
+      respStatus: 200
+      override:
+        OAuthCredentials:
+          login: "JohnnyD03"
+          password: "2837492749274"
+    code2TokenExchange:
+      op: "Exchange code to an OAuth token"
+      reqCT: 'application/json'
+      respCT: 'application/json'
+      respStatus: 200
+      override:
+        CodeTokenExchangeRequest:
+          code: submitCreds.response.token
+          code3:
+            $ref: submitCreds.response.token
+          code2:
+            submitCreds:
+              response: token
+    

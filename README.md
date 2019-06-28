@@ -46,3 +46,8 @@ npm run oasis \
 	--override.security.example="0000000XXXXX" \
 ```
 This will replace the example value, used in request, with a new one.
+
+## TODO
+Extend the `--override` functionality.\
+Scenario files to test complex interactions.\
+Golang port?
