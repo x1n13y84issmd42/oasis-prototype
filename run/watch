@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+export DEBUG="*,-mquery,-data/connection,-babel,-agenda*"
+
+clear
+echo -en "Building The App\n"
+node_modules/.bin/tsc --watch --pretty --project tsconfig.json

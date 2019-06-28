@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export DEBUG="*"
+node -r tsconfig-paths/register out/main.js "$@"

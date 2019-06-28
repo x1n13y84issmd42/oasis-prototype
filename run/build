@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ -d out ]; then
+	find out/ -maxdepth 1 -mindepth 1 -exec rm -rf {} \;
+fi
+
+export DEBUG="*"
+
+clear
+echo -en "Building The Oasis\n"
+node_modules/.bin/tsc --pretty --project tsconfig.json

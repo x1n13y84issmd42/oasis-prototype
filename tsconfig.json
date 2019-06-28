@@ -1,0 +1,34 @@
+{
+	"include": [
+		"./src/**/*"
+	],
+	"exclude": [
+		"./node_modules",
+		"./out"
+	],
+	"compilerOptions": {
+		"outDir": "./out",
+		"baseUrl": "./src",
+		"rootDir": "./src",
+
+		"module": "commonjs",
+		"moduleResolution": "node",
+
+		"allowJs": false,
+		"declaration": true,
+		"experimentalDecorators": true,
+		"noImplicitAny": false,
+		"preserveConstEnums": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"suppressImplicitAnyIndexErrors": true,
+        
+		"target": "es6",
+		"jsx": "react",
+
+		"lib": [
+			"dom",
+			"es2017"
+		]
+	}
+}
