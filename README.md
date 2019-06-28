@@ -1,7 +1,7 @@
 # oasis
 Open API Specification Intel Services
 
-In a less fancy way: Oasis is a tool to automate testing of HTTP APIs, which uses Swagger or OAS specification files as source of data.
+In a less fancy way: Oasis is a tool to automate testing of HTTP APIs, which uses [Swagger](https://swagger.io/specification/v2/) or [OAS](https://swagger.io/specification/) specification files as source of data.
 
 ## How it works
 It reads an API specification file, finds paths, operations, description of data models and security schemes, then uses that data to run requests and validate responses.
