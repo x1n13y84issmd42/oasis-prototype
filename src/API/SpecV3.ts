@@ -321,8 +321,9 @@ export class SpecV3 extends Spec {
 				}
 			}
 		} else {
-			if (name < this.spec.servers) {
-				return this.spec.servers[name];
+			if (name < this.spec.servers.length) {
+				let s = this.spec.servers[name];
+				return {name: s.description || `#${name}`, url: s.url, description: s.description};
 			}
 		}
 
