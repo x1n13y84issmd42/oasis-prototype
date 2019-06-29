@@ -4,7 +4,7 @@ export abstract class Spec {
 	abstract getProjectInfo(): Spec.ProjectInfo;
 	abstract getResource(name: string): Spec.Resource;
 	abstract getResources(): Spec.Resource[];
-	abstract getHost(name: string): Spec.Host;
+	abstract getHost(name: string|number): Spec.Host;
 	abstract getSecurity(name: string): Spec.Security;
 	abstract getSchema(name: string): Spec.Schema;
 }

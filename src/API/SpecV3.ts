@@ -283,7 +283,7 @@ export class SpecV3 extends Spec {
 				if (op) {
 					let opSecName = op.security ? Object.keys(op.security[0])[0] : undefined;
 					res.push({
-						name: name,
+						name: op.summary,
 						path: this.assemblePath(pathName, op),
 						method: opName.toLocaleUpperCase(),
 						headers: this.extractParametersToHeaders(op.parameters),
@@ -313,10 +313,16 @@ export class SpecV3 extends Spec {
 		return res;
 	}
 
-	getHost(name: string): Spec.Host {
-		for (let s of this.spec.servers) {
-			if (s.description === name) {
-				return {name: name, url: s.url, description: s.decription};
+	getHost(name: string|number): Spec.Host {
+		if (typeof name == 'string') {
+			for (let s of this.spec.servers) {
+				if (s.description === name) {
+					return {name: name, url: s.url, description: s.decription};
+				}
+			}
+		} else {
+			if (name < this.spec.servers) {
+				return this.spec.servers[name];
 			}
 		}
 

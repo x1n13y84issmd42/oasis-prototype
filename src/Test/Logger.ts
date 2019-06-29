@@ -4,6 +4,7 @@ export interface ILogger {
 	error(err: Error);
 	testingProject(p: API.Spec.ProjectInfo);
 	usingHost(p: API.Spec.Host);
+	usingDefaultHost();
 	testingResource(res: API.Spec.Resource);
 	usingSecurity(sec: API.Spec.Security);
 	usingRequest(req: API.Spec.Request);
@@ -27,6 +28,9 @@ export interface ILogger {
 }
 
 export class Simple implements ILogger {
+	usingDefaultHost() {
+		console.log(`No host name has been specified, using the first one in the list.`);
+	}
 	responseExpectedArray(schema: API.Spec.Response, actual) {
 		let actualName = actual.name || actual.constructor.name;
 		console.log(`\tExpected an array in response, but received something else (${actualName}).`);
@@ -60,7 +64,7 @@ export class Simple implements ILogger {
 		if (resp.schema) {
 			console.log(`\tTesting against the '${resp.schema.name}' response.`);
 		} else {
-			console.log(`\tTesting against the ${resp.contentType} @ ${resp.statusCode} response.`);
+			console.log(`\tTesting against the ${resp.contentType || "*/*"} @ ${resp.statusCode} response.`);
 		}
 	}
 
