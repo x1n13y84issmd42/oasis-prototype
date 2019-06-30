@@ -14,10 +14,9 @@ export class Resource extends Test{
 
 	async test(requestContentType: string, responseStatus: number, responseContentType: string) {
 		this.logger.testingResource(this.res);
-		this.logger.usingSecurity(this.res.security);
-
+		
 		let result = false;
-
+		
 		try {
 			let opts: request.Options = {
 				url: this.host.url + this.res.path,
@@ -26,7 +25,7 @@ export class Resource extends Test{
 				followAllRedirects: false,
 				followRedirect: false,
 			};
-	
+			
 			//	In case of POST fetching and using a schema for request
 			if (this.res.method === 'POST') {
 				let specReq = this.getRequest(requestContentType);
@@ -41,8 +40,11 @@ export class Resource extends Test{
 			}
 			
 			//	Authorizing the request
-			this.override.security(this.res.security);
-			Security.make(this.res.security).authorizeRequest(opts);
+			if (this.res.security) {
+				this.logger.usingSecurity(this.res.security);
+				this.override.security(this.res.security);
+				Security.make(this.res.security).authorizeRequest(opts);
+			}
 			
 			//	A schema used to validate the response
 			let specResp = this.getResponse(responseStatus, responseContentType)

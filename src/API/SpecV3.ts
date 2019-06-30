@@ -174,6 +174,7 @@ export class SpecV3 extends Spec {
 			for (let opName of resourceOps) {
 				let op = path[opName];
 				if (op && op.summary === name) {
+					//TODO: what are those 0s?
 					let opSecName = op.security ? Object.keys(op.security[0])[0] : undefined;
 					return {
 						name: name,
